@@ -1,6 +1,18 @@
-plugins {
-    id 'java'
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.9.11'
+    }
 }
+
+plugins {
+    id 'java-library'
+}
+
+apply plugin: 'info.solidsoft.pitest'
 
 group = 'org.example'
 version = '1.0-SNAPSHOT'
@@ -16,4 +28,8 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+pitest {
+    junit5PluginVersion.set('1.2.0')
 }
